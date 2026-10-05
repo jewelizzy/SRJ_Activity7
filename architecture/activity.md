@@ -1,11 +1,3 @@
-
----
-
-# 4. `activity.md`
-
-```markdown
-# Diagram 4 – Activity Diagram: Request a Ride Until Trip Ends
-
 ```mermaid
 flowchart TB
 
