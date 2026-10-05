@@ -1,9 +1,4 @@
-
 ---
-
-# 3. `use-cases.md`
-
-```markdown
 # Diagram 3 – Use Case Diagram: SRJ Student Ride Booking
 
 ```mermaid
