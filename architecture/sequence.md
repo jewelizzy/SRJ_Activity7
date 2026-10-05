@@ -1,8 +1,4 @@
 ---
-
-# 5. `sequence.md`
-
-```markdown
 # Diagram 5 – Sequence Diagram: Book a Ride and Driver Acceptance
 
 ```mermaid
