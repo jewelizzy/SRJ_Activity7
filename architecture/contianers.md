@@ -1,6 +1,3 @@
-'''
-
-'''mermaid
 flowchart TB
 
     Student["Student"]
