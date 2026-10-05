@@ -1,68 +1,47 @@
----
-# Diagram 5 – Sequence Diagram: Book a Ride and Driver Acceptance
-
 ```mermaid
 sequenceDiagram
+    actor S as Student
+    participant P as Ride Booking Page
+    participant API as Ride API
+    participant DB as PostgreSQL
+    participant D as Driver App/Page
 
-    actor Student
-    participant UI as Web App UI
-    participant API as API
-    participant Maps as Maps Provider
-    participant DB as PostgreSQL Database
-    participant Notify as Notification Provider
-    actor Driver
+    S->>P: Enter pickup and destination
+    P->>API: POST /ride-requests
+    API->>DB: Create RideRequest
+    DB-->>API: requestId
 
-    Student->>UI: Enter pickup, destination and time
+    API-)D: New ride request (async)
 
-    UI->>API: POST /api/bookings
+    alt Driver accepts
+        D->>API: Accept ride request
+        API->>DB: Create/update Booking = CONFIRMED
+        DB-->>API: bookingId + status
+        API-->>P: Booking CONFIRMED
+        API-->>D: Booking confirmation
 
-    API->>Maps: Request distance and ETA
-    Maps-->>API: Return distance and ETA
+        loop During ride
+            D-)API: Send location/status update (async)
+            API->>DB: Store LocationUpdate
+            API-)P: Push live location/status (WSS)
+        end
 
-    API->>DB: Create booking
-
-    DB-->>API: Booking created
-
-    API-->>UI: Booking confirmation
-
-    UI-->>Student: Show AwaitingDriver
-
-    API->>Notify: Notify available drivers
-
-    Notify-->>Driver: New booking notification
-
-    Driver->>API: Accept booking
-
-    API->>DB: Update booking to DriverAssigned
-
-    DB-->>API: Booking updated
-
-    API->>Notify: Notify student
-
-    Notify-->>Student: Driver assigned
-
-    loop Poll every few seconds
-
-        Student->>UI: Refresh trip status
-
-        UI->>API: GET /api/bookings/{id}
-
-        API->>DB: Read booking and location
-
-        DB-->>API: Status and latest location
-
-        API-->>UI: Booking JSON
-
-        UI-->>Student: Display driver status/location
-
+        D->>API: Mark ride complete
+        API->>DB: Update Booking = COMPLETED
+        DB-->>API: Updated booking
+        API-->>P: Ride completed
+    else Driver rejects
+        D->>API: Reject ride request
+        API->>DB: Keep request in MATCHING
+        DB-->>API: Matching status
+        API-)D: Send request to next available driver
     end
 
-    Driver->>API: Start trip
-
-    API->>DB: Set status InProgress
-
-    Driver->>API: Complete trip
-
-    API->>DB: Set status Completed
-
-    API-->>Student: Trip completed
+    opt Student cancels before completion
+        S->>P: Cancel booking
+        P->>API: Cancel booking
+        API->>DB: Update Booking = CANCELLED
+        DB-->>API: Updated booking
+        API-->>P: Cancellation confirmed
+    end
+```
