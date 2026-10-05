@@ -1,6 +1,6 @@
 # Diagram 1 – C4 System Context: SRJ Student Ride Booking
 
-mermaid
+'''mermaid
 flowchart TD
     Student["Student<br/>Person<br/>Off-campus SORSU student without a vehicle who needs a ride to school"]
     Driver["Tricycle Driver<br/>Person<br/>Local driver who accepts student booking"]
