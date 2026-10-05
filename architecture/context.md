@@ -1,474 +1,213 @@
-<!DOCTYPE html>
-<html lang="en">
+<title>SRJ Student Ride Booking - System Context</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: white;
+    color: #222;
+}
 
-    <title>SRJ Student Ride Booking - System Context</title>
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
 
-    <style>
+.diagram {
+    width: 1400px;
+    margin: auto;
+}
 
-        body {
-            margin: 0;
-            padding: 20px;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: white;
-            color: #222;
-        }
+.box {
+    stroke: #555;
+    stroke-width: 2;
+}
 
-        h1 {
-            text-align: center;
-            margin-bottom: 25px;
-        }
+.person {
+    fill: #075394;
+}
 
-        .diagram {
-            width: 1400px;
-            margin: auto;
-        }
+.system {
+    fill: #1976c5;
+}
 
-        svg {
-            width: 100%;
-            height: auto;
-            border: 1px solid #cccccc;
-            background-color: white;
-        }
+.external {
+    fill: #888;
+}
 
-        /* SYSTEM */
+.label {
+    fill: white;
+    text-anchor: middle;
+    font-weight: bold;
+}
 
-        .system {
-            fill: #ffffff;
-            stroke: #245b8f;
-            stroke-width: 3;
-        }
+.small {
+    fill: white;
+    text-anchor: middle;
+    font-size: 14px;
+}
 
-        /* ACTORS */
+.line {
+    stroke: #555;
+    stroke-width: 2;
+    fill: none;
+    marker-end: url(#arrow);
+}
 
-        .actor {
-            fill: #eef5fb;
-            stroke: #245b8f;
-            stroke-width: 2;
-        }
+.protocol {
+    font-size: 13px;
+    fill: #333;
+}
+</style>
 
-        /* EXTERNAL SYSTEMS */
-
-        .external {
-            fill: #eeeeee;
-            stroke: #777777;
-            stroke-width: 2;
-        }
-
-        /* CONNECTIONS */
-
-        .connection {
-            stroke: #35566f;
-            stroke-width: 2;
-            fill: none;
-        }
-
-        /* TEXT */
-
-        .title {
-            font-size: 26px;
-            font-weight: bold;
-            text-anchor: middle;
-        }
-
-        .name {
-            font-size: 19px;
-            font-weight: bold;
-            text-anchor: middle;
-        }
-
-        .description {
-            font-size: 15px;
-            text-anchor: middle;
-        }
-
-        .protocol {
-            font-size: 13px;
-            text-anchor: middle;
-            fill: #555;
-        }
-
-    </style>
-
-</head>
-
-<body>
+<h1>Diagram 1 - C4 System Context: SRJ Student Ride Booking (MVP)</h1>
 
 <div class="diagram">
 
-    <h1>
-        SRJ Student Ride Booking
-        <br>
-        C4 System Context Diagram
-    </h1>
-
-    <svg viewBox="0 0 1400 850">
-
-        <!-- ================================================= -->
-        <!-- TITLE -->
-        <!-- ================================================= -->
-
-        <text
-            x="700"
-            y="45"
-            class="title">
-            SRJ Student Ride Booking System
-        </text>
-
-
-        <!-- ================================================= -->
-        <!-- STUDENT -->
-        <!-- ================================================= -->
-
-        <rect
-            x="70"
-            y="150"
-            width="270"
-            height="120"
-            rx="15"
-            class="actor">
-        </rect>
-
-        <text
-            x="205"
-            y="185"
-            class="name">
-            Student
-        </text>
-
-        <text
-            x="205"
-            y="215"
-            class="description">
-            SORSU student
-        </text>
-
-        <text
-            x="205"
-            y="240"
-            class="description">
-            Books and follows rides
-        </text>
-
-
-        <!-- ================================================= -->
-        <!-- SRJ SYSTEM -->
-        <!-- ================================================= -->
-
-        <rect
-            x="565"
-            y="135"
-            width="270"
-            height="150"
-            rx="15"
-            class="system">
-        </rect>
-
-        <text
-            x="700"
-            y="175"
-            class="name">
-            SRJ Ride Booking
-        </text>
-
-        <text
-            x="700"
-            y="210"
-            class="description">
-            Student Ride Booking
-        </text>
-
-        <text
-            x="700"
-            y="235"
-            class="description">
-            Web Application
-        </text>
-
-        <text
-            x="700"
-            y="260"
-            class="description">
-            Booking + Live Updates
-        </text>
-
-
-        <!-- ================================================= -->
-        <!-- DRIVER -->
-        <!-- ================================================= -->
-
-        <rect
-            x="1060"
-            y="150"
-            width="270"
-            height="120"
-            rx="15"
-            class="actor">
-        </rect>
-
-        <text
-            x="1195"
-            y="185"
-            class="name">
-            Tricycle Driver
-        </text>
-
-        <text
-            x="1195"
-            y="215"
-            class="description">
-            Accepts bookings
-        </text>
-
-        <text
-            x="1195"
-            y="240"
-            class="description">
-            Updates trip status
-        </text>
-
-
-        <!-- ================================================= -->
-        <!-- COORDINATOR / ADMIN -->
-        <!-- ================================================= -->
-
-        <rect
-            x="565"
-            y="390"
-            width="270"
-            height="120"
-            rx="15"
-            class="actor">
-        </rect>
-
-        <text
-            x="700"
-            y="425"
-            class="name">
-            Coordinator / Admin
-        </text>
-
-        <text
-            x="700"
-            y="455"
-            class="description">
-            Manages drivers
-        </text>
-
-        <text
-            x="700"
-            y="480"
-            class="description">
-            Reviews usage metrics
-        </text>
-
-
-        <!-- ================================================= -->
-        <!-- MAPS PROVIDER -->
-        <!-- ================================================= -->
-
-        <rect
-            x="180"
-            y="650"
-            width="270"
-            height="110"
-            rx="15"
-            class="external">
-        </rect>
-
-        <text
-            x="315"
-            y="685"
-            class="name">
-            Maps Provider
-        </text>
-
-        <text
-            x="315"
-            y="715"
-            class="description">
-            Distance calculation
-        </text>
-
-        <text
-            x="315"
-            y="740"
-            class="description">
-            ETA information
-        </text>
-
-
-        <!-- ================================================= -->
-        <!-- NOTIFICATION PROVIDER -->
-        <!-- ================================================= -->
-
-        <rect
-            x="950"
-            y="650"
-            width="270"
-            height="110"
-            rx="15"
-            class="external">
-        </rect>
-
-        <text
-            x="1085"
-            y="685"
-            class="name">
-            Notification Provider
-        </text>
-
-        <text
-            x="1085"
-            y="715"
-            class="description">
-            Email / SMS
-        </text>
-
-        <text
-            x="1085"
-            y="740"
-            class="description">
-            Ride notifications
-        </text>
-
-
-        <!-- ================================================= -->
-        <!-- STUDENT → SYSTEM -->
-        <!-- ================================================= -->
-
-        <line
-            x1="340"
-            y1="210"
-            x2="565"
-            y2="210"
-            class="connection">
-        </line>
-
-        <text
-            x="450"
-            y="195"
-            class="protocol">
-            HTTPS
-        </text>
-
-
-        <!-- ================================================= -->
-        <!-- DRIVER → SYSTEM -->
-        <!-- ================================================= -->
-
-        <line
-            x1="1060"
-            y1="210"
-            x2="835"
-            y2="210"
-            class="connection">
-        </line>
-
-        <text
-            x="950"
-            y="195"
-            class="protocol">
-            HTTPS
-        </text>
-
-
-        <!-- ================================================= -->
-        <!-- SYSTEM → COORDINATOR -->
-        <!-- ================================================= -->
-
-        <line
-            x1="700"
-            y1="285"
-            x2="700"
-            y2="390"
-            class="connection">
-        </line>
-
-        <text
-            x="735"
-            y="345"
-            class="protocol">
-            HTTPS
-        </text>
-
-
-        <!-- ================================================= -->
-        <!-- SYSTEM → MAPS -->
-        <!-- ================================================= -->
-
-        <line
-            x1="565"
-            y1="470"
-            x2="450"
-            y2="650"
-            class="connection">
-        </line>
-
-        <text
-            x="480"
-            y="570"
-            class="protocol">
-            HTTPS / JSON
-        </text>
-
-
-        <!-- ================================================= -->
-        <!-- SYSTEM → NOTIFICATION -->
-        <!-- ================================================= -->
-
-        <line
-            x1="835"
-            y1="470"
-            x2="950"
-            y2="650"
-            class="connection">
-        </line>
-
-        <text
-            x="900"
-            y="570"
-            class="protocol">
-            HTTPS / JSON
-        </text>
-
-
-        <!-- ================================================= -->
-        <!-- LEGEND -->
-        <!-- ================================================= -->
-
-        <rect
-            x="500"
-            y="600"
-            width="400"
-            height="80"
-            fill="#f7f7f7"
-            stroke="#999"
-            stroke-width="1">
-        </rect>
-
-        <text
-            x="700"
-            y="625"
-            class="name">
-            System Context
-        </text>
-
-        <text
-            x="700"
-            y="650"
-            class="description">
-            People interact with SRJ;
-            external providers support
-        </text>
-
-    </svg>
+<svg width="1400" height="850" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+    <marker id="arrow"
+            markerWidth="10"
+            markerHeight="10"
+            refX="9"
+            refY="3"
+            orient="auto">
+        <path d="M0,0 L10,3 L0,6 Z" fill="#555"/>
+    </marker>
+</defs>
+
+<!-- Student -->
+<rect x="80" y="80" width="250" height="110"
+      rx="15" class="box person"/>
+
+<text x="205" y="115" class="label">Student</text>
+<text x="205" y="140" class="small">[Person]</text>
+<text x="205" y="165" class="small">
+    Off-campus SORSU student
+</text>
+
+<!-- Driver -->
+<rect x="575" y="80" width="250" height="110"
+      rx="15" class="box person"/>
+
+<text x="700" y="115" class="label">Tricycle Driver</text>
+<text x="700" y="140" class="small">[Person]</text>
+<text x="700" y="165" class="small">
+    Local driver who accepts
+</text>
+
+<!-- Coordinator -->
+<rect x="1070" y="80" width="250" height="110"
+      rx="15" class="box person"/>
+
+<text x="1195" y="115" class="label">Coordinator</text>
+<text x="1195" y="140" class="small">[Person]</text>
+<text x="1195" y="165" class="small">
+    Manages drivers and metrics
+</text>
+
+<!-- Main System -->
+<rect x="500" y="330" width="400" height="140"
+      rx="15" class="box system"/>
+
+<text x="700" y="370" class="label">
+    SRJ Ride Booking
+</text>
+
+<text x="700" y="400" class="small">
+    [Software System]
+</text>
+
+<text x="700" y="430" class="small">
+    Web app for booking rides to campus
+</text>
+
+<!-- Maps -->
+<rect x="350" y="610" width="250" height="110"
+      rx="15" class="box external"/>
+
+<text x="475" y="645" class="label">
+    Maps Provider
+</text>
+
+<text x="475" y="675" class="small">
+    [External System]
+</text>
+
+<text x="475" y="700" class="small">
+    Distance and ETA
+</text>
+
+<!-- Notification -->
+<rect x="800" y="610" width="250" height="110"
+      rx="15" class="box external"/>
+
+<text x="925" y="645" class="label">
+    Notification Provider
+</text>
+
+<text x="925" y="675" class="small">
+    [External System]
+</text>
+
+<text x="925" y="700" class="small">
+    Email or SMS alerts
+</text>
+
+<!-- Connections -->
+
+<path d="M205 190 L570 330" class="line"/>
+
+<text x="350" y="250" class="protocol">
+    Books a ride, cancels it
+</text>
+
+<text x="350" y="268" class="protocol">
+    and follows trip [HTTPS]
+</text>
+
+<path d="M700 190 L700 330" class="line"/>
+
+<text x="720" y="255" class="protocol">
+    Sets availability,
+</text>
+
+<text x="720" y="273" class="protocol">
+    accepts rides [HTTPS]
+</text>
+
+<path d="M1195 190 L830 330" class="line"/>
+
+<text x="1000" y="250" class="protocol">
+    Manages drivers and
+</text>
+
+<text x="1000" y="268" class="protocol">
+    reviews metrics [HTTPS]
+</text>
+
+<path d="M590 470 L475 610" class="line"/>
+
+<text x="400" y="535" class="protocol">
+    Asks for distance and ETA
+</text>
+
+<text x="400" y="553" class="protocol">
+    [HTTPS/JSON]
+</text>
+
+<path d="M810 470 L925 610" class="line"/>
+
+<text x="850" y="535" class="protocol">
+    Asks it to alert users
+</text>
+
+<text x="850" y="553" class="protocol">
+    [HTTPS/JSON]
+</text>
+
+</svg>
 
 </div>
-
-</body>
-
-</html>
