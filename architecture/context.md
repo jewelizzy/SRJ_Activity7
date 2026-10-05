@@ -1,19 +1,17 @@
-# Diagram 1 – C4 System Context: SRJ Student Ride Booking (MVP)
+flowchart LR
+    Student["Student"]
+    Driver["Tricycle Driver"]
+    Admin["Coordinator / Admin"]
 
-```mermaid
-flowchart TB
-    Student["Student<br/>Person"]
-    Driver["Tricycle Driver<br/>Person"]
-    Admin["Coordinator<br/>Person"]
+    System["SRJ Student Ride Booking System"]
 
-    SRJ["SRJ Ride Booking<br/>Software System"]
+    Maps["Maps Provider"]
+    Notify["Notification Provider"]
 
-    Maps["Maps Provider<br/>External System"]
-    Notify["Notification Provider<br/>External System"]
+    Student -->|"Books a ride"| System
+    Student -->|"Views booking status"| System
+    Driver -->|"Accepts / manages rides"| System
+    Admin -->|"Manages system"| System
 
-    Student --> SRJ
-    Driver --> SRJ
-    Admin --> SRJ
-
-    SRJ --> Maps
-    SRJ --> Notify
+    System -->|"Gets route / location"| Maps
+    System -->|"Sends notifications"| Notify
