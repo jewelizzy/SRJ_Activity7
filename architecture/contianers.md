@@ -1,36 +1,29 @@
-# Diagram 2 – C4 Container: SRJ Student Ride Booking (MVP)
-
-```mermaid
 flowchart TB
 
-    Student["Student<br/>Person<br/>Books rides"]
+    Student["Student"]
+    Driver["Tricycle Driver"]
+    Admin["Coordinator / Admin"]
 
-    Driver["Tricycle Driver<br/>Person<br/>Accepts rides and updates trips"]
+    subgraph SRJ["SRJ Student Ride Booking System"]
 
-    Coordinator["Coordinator<br/>Person<br/>Manages drivers and reviews metrics"]
+        Browser["Next.js UI<br/>(Web Browser)"]
 
-    subgraph SRJ["SRJ Ride Booking"]
+        API["Next.js API Route Handlers<br/>(Server)"]
 
-        UI["Web App (UI)<br/><br/>Next.js / React<br/>Runs in the browser<br/><br/>Booking, driver and coordinator pages"]
-
-        API["API<br/><br/>Next.js Route Handlers<br/>Node.js runtime<br/><br/>Booking rules, matching and trip status"]
-
-        DB[("Database<br/><br/>PostgreSQL<br/><br/>Users, bookings,<br/>location updates and notifications")]
+        Database[("PostgreSQL<br/>Database")]
 
     end
 
-    Maps["Maps Provider<br/>External System<br/><br/>Distance and ETA"]
+    Maps["Maps Provider"]
+    Notification["Notification Provider"]
 
-    Notification["Notification Provider<br/>External System<br/><br/>Email or SMS alerts"]
+    Student -->|"Uses"| Browser
+    Driver -->|"Uses"| Browser
+    Admin -->|"Uses"| Browser
 
+    Browser -->|"HTTP Requests"| API
 
-    Student -->|"HTTPS"| UI
-    Driver -->|"HTTPS"| UI
-    Coordinator -->|"HTTPS"| UI
+    API -->|"Read / Write data"| Database
 
-    UI -->|"HTTPS / JSON<br/>Polling"| API
-
-    API -->|"SQL over TLS"| DB
-
-    API -->|"HTTPS / JSON"| Maps
-    API -->|"HTTPS / JSON"| Notification
+    API -->|"Route / Location"| Maps
+    API -->|"Notifications"| Notification
