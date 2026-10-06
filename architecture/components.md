@@ -46,10 +46,10 @@ flowchart TB
     Booking --> INotify
 
     ILocation --> LocationRepo
-    IBookingRepo --> BookingRepo
     IUserRepo --> UserRepo
     IMaps --> MapsAdapter
     INotify --> NotifyAdapter
+    IBookingRepo --> BookingRepo
 
     LocationRepo --> DB
     BookingRepo --> DB
