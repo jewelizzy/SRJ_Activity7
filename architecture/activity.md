@@ -1,88 +1,76 @@
-# Diagram 4 – Activity Diagram: Request a Ride Until Trip Ends
+````md
+# Activity Diagram
+## SRJ Student Ride Booking
 
 ```mermaid
-flowchart TB
+flowchart TD
 
-    Start((Start))
+    Start([Start])
 
-    subgraph Student["Student"]
+    A["Student logs in"]
+    B["Student submits ride request"]
+    C["System validates booking details"]
+    D{"Booking details valid?"}
 
-        S1["Open booking form"]
-        S2["Enter pickup point,<br/>destination and scheduled time"]
-        S3["Receive driver assignment"]
-        S4["View trip progress"]
-        S5["View completed trip"]
+    E["System searches for available driver"]
+    F["System notifies available driver"]
+    G{"Driver accepts booking?"}
 
-    end
+    H["System searches for another driver"]
+    I["System confirms booking"]
+    J["Driver goes to pickup location"]
+    K["Driver picks up student"]
+    L["Ride is in progress"]
+    M["Driver completes ride"]
+    N["Student pays fare in cash"]
+    O["System updates booking status"]
 
+    End([End])
 
-    subgraph System["SRJ System"]
+    Start --> A
+    A --> B
+    B --> C
+    C --> D
 
-        A1["Validate booking details"]
+    D -- "No" --> B
+    D -- "Yes" --> E
 
-        D1{"Details valid?"}
+    E --> F
+    F --> G
 
-        A2["Create booking<br/>Status = AwaitingDriver"]
+    G -- "No" --> H
+    H --> E
 
-        A3["Find available drivers"]
+    G -- "Yes" --> I
+    I --> J
+    J --> K
+    K --> L
+    L --> M
+    M --> N
+    N --> O
+    O --> End
+````
 
-        D2{"Driver accepts?"}
+### Activity Flow
 
-        A4["Set status = Expired"]
+1. Student logs in.
+2. Student submits a ride request.
+3. System validates the booking details.
+4. System searches for an available driver.
+5. Available driver receives the request.
+6. Driver accepts or declines the booking.
+7. If declined, the system searches for another driver.
+8. If accepted, the system confirms the booking.
+9. Driver goes to the pickup location.
+10. Driver picks up the student.
+11. The ride is in progress.
+12. Driver completes the ride.
+13. Student pays the fare in cash.
+14. System updates the booking status.
 
-        A5["Assign driver<br/>Status = DriverAssigned"]
+```
 
-        A6["Update driver location"]
+This corresponds to **Diagram 4 – Activity (swimlanes)** in your architecture document, whose stated purpose is to show branches in the core workflow, including the case where **no driver accepts**.
 
-        A7["Set status = InProgress"]
-
-        A8["Set status = Completed"]
-
-    end
-
-
-    subgraph Driver["Tricycle Driver"]
-
-        D3["Receive booking request"]
-
-        D4["Accept booking"]
-
-        D5["Travel to pickup point"]
-
-        D6["Start trip"]
-
-        D7["Complete trip"]
-
-    end
-
-
-    Start --> S1
-    S1 --> S2
-    S2 --> A1
-    A1 --> D1
-
-    D1 -->|"No"| S2
-    D1 -->|"Yes"| A2
-
-    A2 --> A3
-    A3 --> D3
-    D3 --> D4
-    D4 --> D2
-
-    D2 -->|"No / Timeout"| A4
-    A4 --> S5
-
-    D2 -->|"Yes"| A5
-    A5 --> S3
-    S3 --> D5
-    D5 --> D6
-    D6 --> A7
-
-    A7 --> A6
-    A6 --> S4
-
-    S4 --> D7
-    D7 --> A8
-    A8 --> S5
-
-    S5 --> End((End))
+Kapag okay na, sabihin mo lang **“next”** → `sequence.md`.
+```
