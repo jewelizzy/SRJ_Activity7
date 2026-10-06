@@ -20,7 +20,7 @@ Proposed experiment: Manual booking through a Facebook Page/Messenger group for 
 
 Required diagram ownership
 
-| #	|Diagram | File in 'docs/architecture/'	| Proposed owner |
+| #	|Diagram | File in docs/architecture/	| Proposed owner |
 |---|---|---|---|
 | 1	| C4 System Context	| context.md |	Jewel Frac |
 | 2 |	C4 Container	| containers.md |	Jewel Frac |
