@@ -22,15 +22,15 @@ Required diagram ownership
 
 | #	|Diagram | File in 'docs/architecture/'	| Proposed owner |
 |---|---|---|---|
-| 1	| C4 System Context	| 'context.md' |	Jewel Frac |
-| 2 |	C4 Container	| 'containers.md' |	Jewel Frac |
-| 3 |	Use Case |	'use-cases.md' |	Raineille Evasco |
-| 4	| Activity	| 'activity.md' |	Raineille Evasco |
-| 5	| Sequence | 'sequence.md' | Jelo Fugado|
-| 6 | Class |	'class.md' | Shella Guyala |
-| 7 |	State Machine	| 'state-machine.md' | Shella Guyala |
-| 8	| Package	| 'packages.md' |	Jelo Fugado |
-| 9	| Component |	'component.md' | Jelo Fugado |
-| 10 | Deployment |'deployment.md' |	Jewel Frac |
-| 11 |	ERD |	'Erd.md' |	Shella Guyala |
+| 1	| C4 System Context	| context.md |	Jewel Frac |
+| 2 |	C4 Container	| containers.md |	Jewel Frac |
+| 3 |	Use Case |	use-cases.md |	Raineille Evasco |
+| 4	| Activity	| activity.md |	Raineille Evasco |
+| 5	| Sequence | sequence.md | Jelo Fugado|
+| 6 | Class |	class.md | Shella Guyala |
+| 7 |	State Machine	| state-machine.md | Shella Guyala |
+| 8	| Package	| packages.md |	Jelo Fugado |
+| 9	| Component |	component.md | Jelo Fugado |
+| 10 | Deployment |deployment.md |	Jewel Frac |
+| 11 |	ERD |	erd.md |	Shella Guyala |
 
