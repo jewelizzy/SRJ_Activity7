@@ -1,5 +1,5 @@
 # Activity Diagram
-'''mermaid
+```mermaid
 flowchart LR
 
     subgraph Student["Student"]
