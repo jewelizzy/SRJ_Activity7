@@ -88,5 +88,5 @@ sequenceDiagram
 
         opt status is DriverAssigned
             UI-->>Student: Show driver details and location
-        end
+
     end
