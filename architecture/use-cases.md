@@ -4,21 +4,61 @@
 ```mermaid
 flowchart LR
 
-    Student(["👤 Student"])
-    Driver(["👤 Tricycle Driver"])
-    Coordinator(["👤 Coordinator"])
+    Student["Student"]
 
-    subgraph SRJ["SRJ Student Ride Booking System"]
+    Driver["Tricycle Driver"]
 
-        UC1(["Track driver location"])
-        UC2(["Book a ride"])
-        UC3(["Cancel booking"])
-        UC4(["Register account"])
-        UC5(["Set availability"])
-        UC6(["Log in"])
-        UC7(["Accept booking"])
-        UC8(["Update trip status"])
-        UC9(["Manage drivers"])
+    Coordinator["Coordinator"]
+
+    subgraph SRJ["SRJ Ride Booking"]
+
+        Track["Track driver location"]
+
+        Book["Book a ride"]
+
+        Cancel["Cancel booking"]
+
+        Register["Register account"]
+
+        Availability["Set availability"]
+
+        Login["Log in"]
+
+        Accept["Accept booking"]
+
+        Update["Update trip status"]
+
+        Manage["Manage drivers"]
+
+        Metrics["View usage metrics"]
+
+    end
+
+    Maps["Maps Provider<br/>External System"]
+
+    Notify["Notification Provider<br/>External System"]
+
+    Student --- Track
+    Student --- Book
+    Student --- Cancel
+    Student --- Register
+    Student --- Login
+
+    Driver --- Register
+    Driver --- Login
+    Driver --- Availability
+    Driver --- Accept
+    Driver --- Update
+
+    Coordinator --- Login
+    Coordinator --- Manage
+    Coordinator --- Metrics
+
+    Maps --- Track
+    Maps --- Book
+
+    Notify --- Accept
+    Notify --- Update
         UC10(["View usage metrics"])
 
     end
