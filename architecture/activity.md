@@ -1,4 +1,4 @@
-# Swimlanes Diagram
+# Activity (Swimlanes Diagram)
 ```mermaid
 flowchart LR
     subgraph Student["Student"]
