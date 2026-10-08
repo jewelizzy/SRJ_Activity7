@@ -1,3 +1,5 @@
+# Swimlanes Diagram
+```mermaid
 flowchart TB
     subgraph Student["Student"]
         direction TB
@@ -37,52 +39,4 @@ flowchart TB
     D2 -->|"accepted"| Y5 --> S3
     Y5 --> R2 --> R3 --> Y6 --> R4 --> Y7 --> S4 --> S5
 
-Diagram 5 — Sequence Diagram
 
-sequenceDiagram
-    participant Student
-    participant UI as Booking Page (UI)
-    participant API
-    participant DB as Database
-    participant Maps as Maps Provider (external)
-    participant Notify as Notification Provider (external)
-    participant Driver as Driver (via Driver Page)
-
-    Student->>UI: Submit pickup point, destination and time
-    UI->>API: POST /api/bookings
-    API->>Maps: Request distance and ETA
-    Maps-->>API: Distance and ETA
-
-    alt details valid and maps answered
-        API->>DB: Insert booking (status = AwaitingDriver)
-        DB-->>API: Booking id
-        API-)Notify: Alert available drivers (async)
-        API-->>UI: 201 Created + booking id
-        UI-->>Student: Show "Looking for a driver"
-    else invalid details or maps unavailable
-        API-->>UI: 422 / 503 error
-        UI-->>Student: Show error, let student retry
-    end
-
-    Driver->>API: POST /api/bookings/{id}/accept
-    API->>DB: Set DriverAssigned only if status = AwaitingDriver
-
-    alt one row updated
-        DB-->>API: 1 row updated
-        API-)Notify: Alert student: driver assigned (async)
-        API-->>Driver: 200 OK
-    else already taken, cancelled or expired
-        DB-->>API: 0 rows updated
-        API-->>Driver: 409 Conflict
-    end
-
-    loop every few seconds while the booking is active
-        UI->>API: GET /api/bookings/{id}
-        API->>DB: Read status and latest driver location
-        DB-->>API: Status and location
-        API-->>UI: Booking JSON
-
-        opt status is DriverAssigned
-            UI-->>Student: Show driver details and location
-        end
-    end
