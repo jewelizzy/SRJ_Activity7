@@ -1,5 +1,4 @@
 # Diagram 1 - C4 System Context
-
 ```mermaid
 flowchart TB
 
