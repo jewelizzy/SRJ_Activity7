@@ -1,8 +1,8 @@
 # Swimlanes Diagram
 ```mermaid
-flowchart TB
+flowchart LR
     subgraph Student["Student"]
-        direction TB
+        direction LR
         S0((Start))
         S1["Open booking form"]
         S2["Enter pickup point,<br/>destination and time"]
@@ -12,7 +12,7 @@ flowchart TB
     end
 
     subgraph System["System"]
-        direction TB
+        direction LR
         Y1["Validate booking<br/>details"]
         D1{"Details valid?"}
         Y2["Create booking,<br/>status = AwaitingDriver"]
@@ -25,7 +25,7 @@ flowchart TB
     end
 
     subgraph Driver["Driver"]
-        direction TB
+        direction LR
         R1["Review booking<br/>request"]
         R2["Drive to pickup point"]
         R3["Start trip"]
