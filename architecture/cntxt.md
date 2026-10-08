@@ -3,7 +3,7 @@
 ```mermaid
 flowchart TB
 
-    Person(student, "Off-campus SORSU student who needs a ride to school.")
+    Person(student, "Student" "Off-campus SORSU student who needs a ride to school.")
      Person(driver, "Tricycle Driver", "Local driver who accepts student bookings.")
     Person(coordinator, "Coordinator", "Manages drivers and reviews booking metrics.")
 
@@ -19,4 +19,3 @@ flowchart TB
 
     SRJ -->|"Asks for distance and ETA of a trip<br/>HTTPS / JSON"| Maps
     SRJ -->|"Asks to alert users about booking changes<br/>HTTPS / JSON"| Notify
-```
