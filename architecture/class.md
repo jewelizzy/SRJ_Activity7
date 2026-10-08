@@ -3,7 +3,7 @@
 ```mermaid
 classDiagram
     class User {
-        +UUID id
+
         +String full_name
         +String email
         +String phone_number
@@ -13,7 +13,7 @@ classDiagram
     }
 
     class DriverProfile {
-        +UUID id
+        
         +UUID user_id
         +String plate_number
         +String vehicle_type
