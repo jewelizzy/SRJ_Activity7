@@ -3,11 +3,9 @@
 ```mermaid
 flowchart TB
 
-    Student["Student<br/>Person<br/>Off-campus SORSU student who needs a ride to school"]
-
-    Driver["Tricycle Driver<br/>Person<br/>Local driver who accepts student bookings"]
-
-    Coordinator["Coordinator<br/>Person<br/>Manages drivers and reviews usage metrics"]
+    Person(student, "Student", "Off-campus SORSU student who needs a ride to school.")
+    Person(driver, "Tricycle Driver", "Local driver who accepts student bookings.")
+    Person(coordinator, "Coordinator", "Manages drivers and reviews booking metrics.")
 
     SRJ["SRJ Ride Booking<br/>Software System<br/>Web app for booking rides to campus with live trip updates"]
 
