@@ -1,6 +1,6 @@
 # Activity (Swimlanes Diagram)
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph Student["Student"]
         direction LR
         S0((Start))
