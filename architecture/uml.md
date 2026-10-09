@@ -1,8 +1,7 @@
 flowchart LR
 ```mermaid
-    subgraph API["API Container - Next.js Route Handlers"]
+    subgraph API["API Container"]
         RH["Route Handlers"]
-
         AUTH["Auth Service"]
         BOOK["Booking Service"]
         TRACK["Tracking Service"]
