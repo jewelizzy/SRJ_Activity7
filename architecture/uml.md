@@ -1,5 +1,4 @@
 flowchart LR
-
 ```mermaid
     subgraph API["API Container - Next.js Route Handlers"]
         RH["Route Handlers"]
