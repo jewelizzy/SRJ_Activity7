@@ -1,8 +1,8 @@
+# UML Component Diagram ( API Route)
+
+```mermaid
 flowchart TB
-
-
-    subgraph API["API Container"]
-        RH["Route Handlers"]
+    Routes["API Route Handlers"]
 
         AUTH["Auth Service"]
         BOOK["Booking Service"]
