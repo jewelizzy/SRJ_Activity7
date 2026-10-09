@@ -3,7 +3,7 @@
 flowchart TB
     subgraph Student["Student"]
         direction LR
-        S0((Start))
+        S0(Start)
         S1["Open booking form"]
         S2["Enter pickup point,<br/>destination and time"]
         S3["Receive 'driver<br/>assigned' alert"]
